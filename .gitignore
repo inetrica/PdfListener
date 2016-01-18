@@ -1,1 +1,4 @@
 data/
+
+trash/*
+!trash/.placeholder
