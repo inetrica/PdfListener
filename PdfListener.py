@@ -33,11 +33,12 @@ def main():
         print("Usage: python PdfListener.py <dst path>")
         exit()
 
-    setup()
 
     #make sure folder to listen from exists
     dstloc = sys.argv[1]
-    print(dstloc)
+    if not dstloc.endswith("/"):
+        dstloc = dstloc + "/"
+    setup(dstloc)
 
     spinloop(dstloc)
 
