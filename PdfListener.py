@@ -1,16 +1,21 @@
 import sys
 import os
 import time
+import datetime as dt
 
 srcpath = "data/"
 trash = "trash/"
 
 def spinloop(dstpath):
     while True:
+        dpathtime = dstpath + dt.datetime.now().strftime("%Y%m%d") + "/"
+        if not os.path.exists(dpathtime):
+            os.makedirs(dpathtime)
+
         for f in os.listdir(srcpath): #for each file in folder
             s = os.path.join(srcpath, f)
             if f.endswith(".pdf"): #move to designated folder
-                d = os.path.join(dstpath, f)
+                d = os.path.join(dpathtime, f)
                 os.rename(s, d)
             else:                  #move to trash folder
                 d = os.path.join(trash, f)
